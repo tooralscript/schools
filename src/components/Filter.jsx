@@ -41,6 +41,8 @@ export default function Filter() {
           <label htmlFor="axtarish">Ada gore axtarish: </label>
           <input type="search" id='axtarish' name='axtarish' />
         </div>
+        <div>
+        </div>
       </form>
     </div>
   )
