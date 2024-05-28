@@ -40,10 +40,6 @@
   color: black;
 }
 
-.menu .link:hover {
-  background-color: rgb(190, 116, 6);
-}
-
 .menu .link:nth-of-type(1),
 .menu .link:nth-of-type(2) {
   border-bottom: 1px solid rgb(30, 117, 223);
@@ -59,12 +55,10 @@
 .filterBox {
   width: 100%;
   height: 8%;
-  background-color: red;
 }
 
 .generatedContent {
   width: 100%;
   height: 100%;
-  /* background-color: green; */
   border: 1px solid;
 }

@@ -6,32 +6,44 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GeneratedUnis from "../components/GeneratedUnis";
 import GeneratedSchools from "../components/GeneratedSchools";
 import GeneratedLyceums from "../components/GeneratedLyceums";
-import UniFilter from "../components/UniFilter";
-import SchoolFilter from "../components/SchoolFilter";
-import LyceumFilter from "../components/LyceumFilter";
+import Filter from "../components/Filter";
+import { useDispatch } from 'react-redux';
+import { setUniClicked, setSchoolClicked, setLyceumClicked } from '../features/menu/menuSlice';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Content() {
-  const [uniClicked, setUniClicked] = useState(false);
-  const [schoolClicked, setSchoolClicked] = useState(false);
-  const [lyceumClicked, setLyceumClicked] = useState(false);
 
-  function handleUniClick() {
-    setUniClicked(true);
-    setSchoolClicked(false);
-    setLyceumClicked(false);
-  }
+  const navigate = useNavigate();
 
-  function handleSchoolClick() {
-    setUniClicked(false);
-    setSchoolClicked(true);
-    setLyceumClicked(false);
-  }
+  useEffect(() => {
+    navigate('/content');
+  }, []);
 
-  function handleLyceumClick() {
-    setUniClicked(false);
-    setSchoolClicked(false);
-    setLyceumClicked(true);
-  }
+  const uniClicked = useSelector(state => state.menu.uniClicked);
+  const schoolClicked = useSelector(state => state.menu.schoolClicked);
+  const lyceumClicked = useSelector(state => state.menu.lyceumClicked);
+
+  const dispatch = useDispatch();
+
+  const handleUniClick = () => {
+    dispatch(setUniClicked(true));
+    dispatch(setSchoolClicked(false));
+    dispatch(setLyceumClicked(false));
+  };
+  
+  const handleSchoolClick = () => {
+    dispatch(setUniClicked(false));
+    dispatch(setSchoolClicked(true));
+    dispatch(setLyceumClicked(false));
+  };
+  
+  const handleLyceumClick = () => {
+    dispatch(setUniClicked(false));
+    dispatch(setSchoolClicked(false));
+    dispatch(setLyceumClicked(true));
+  };
 
   return (
     <div className={style.container}>
@@ -75,9 +87,10 @@ export default function Content() {
 
         <div className={style.filterBox}>
         <Routes>
-            <Route path="/universities" element={< UniFilter/>} />
-            <Route path="/schools" element={<SchoolFilter/>} />
-            <Route path="/lyceums" element={<LyceumFilter />} />
+            <Route path="/" element={<Filter/>} />
+            <Route path="/universities" element={<Filter/>} />
+            <Route path="/schools" element={<Filter/>} />
+            <Route path="/lyceums" element={<Filter/>} />
           </Routes>
         </div>
 
