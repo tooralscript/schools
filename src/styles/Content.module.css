@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(30, 117, 223);
+  display: flex;
+  padding: 30px;
+  border: 1px solid red;
+}
+
+.menu {
+  width: 15%;
+  height: 24%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+}
+
+.menu nav {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu .link {
+  width: 100%;
+  height: 33.3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Roboto";
+  /* border: 1px solid red; */
+  text-decoration: none;
+  color: black;
+}
+
+.menu .link:hover {
+  background-color: rgb(190, 116, 6);
+  color: white;
+}
+
+.menu .link:nth-of-type(1),
+.menu .link:nth-of-type(2) {
+  border-bottom: 1px solid rgb(30, 117, 223);
+}
