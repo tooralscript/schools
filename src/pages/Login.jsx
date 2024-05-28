@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../styles/Login.module.css"
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+
+  const [username,setUsername] = useState("");
+  const [password,setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+
+    // make sure user entered something in the fields
+    if(username && password){
+      navigate('/content'); 
+    }
+    
+  };
+
+
+
   return (
     <div className={style.container}>
 
@@ -13,15 +31,15 @@ export default function Login() {
 
           <div>
             <label htmlFor="username">Username</label>
-            <input type="text" id='username' name='username' required />
+            <input value={username} type="text" id='username' name='username' required onChange={(e=>{setUsername(e.target.value)})} />
           </div>
 
           <div>
             <label htmlFor="password">Password</label>
-            <input type="text" id='password' name='password' required />
+            <input value={password} type="text" id='password' name='password' required onChange={(e=>{setPassword(e.target.value)})} />
           </div>
 
-          <button type='submit'>Login</button>
+          <button type='submit' onClick={handleLogin}>Login</button>
 
         </form>
 
