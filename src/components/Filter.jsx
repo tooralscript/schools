@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import style from "../styles/Filter.module.css";
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setSelectedYear, setSearchQuery } from '../features/filter/filterSlice';
 
 export default function Filter() {
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    dispatch(setSelectedYear(e.target.value));
+  };
+
+  const handleSearchChange = (e) => {
+    dispatch(setSearchQuery(e.target.value));
+  };
 
   const uniClicked = useSelector(state => state.menu.uniClicked);
   const schoolClicked = useSelector(state => state.menu.schoolClicked);
@@ -14,7 +26,7 @@ export default function Filter() {
       <form action="submit" style={{display : (uniClicked || schoolClicked || lyceumClicked) ? "flex" : "none" }}>
         <div style={{display : uniClicked ? "block" : "none"}}>
           <label htmlFor="yaranma">Yaranma ili: </label>
-          <select name="yaranma" id="yaranma">
+          <select onChange={handleChange} name="yaranma" id="yaranma">
             <option value="2000">2000</option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
@@ -39,9 +51,10 @@ export default function Filter() {
         </div>
         <div>
           <label htmlFor="axtarish">Ada gore axtarish: </label>
-          <input type="search" id='axtarish' name='axtarish' />
+          <input type="search" id='axtarish' name='axtarish' onChange={handleSearchChange} />
         </div>
         <div>
+          <button type="reset" onClick={() => dispatch(clearFilters())}>Clear</button>
         </div>
       </form>
     </div>

@@ -27,7 +27,7 @@ export default function Login() {
 
         <span>Login</span>
 
-        <form>
+        <form className={style.loginForm}>
 
           <div>
             <label htmlFor="username">Username</label>
