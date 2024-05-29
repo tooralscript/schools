@@ -2,7 +2,7 @@ import React from 'react';
 import style from "../styles/Filter.module.css";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setSelectedYear, setSearchQuery } from '../features/filter/filterSlice';
+import { setSelectedYear, setSearchQuery, clearFilters } from '../features/filter/filterSlice';
 
 export default function Filter() {
 
